@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -13,7 +13,7 @@ target.getMeasureCounter = function(Yoga, cb, staticWidth, staticHeight) {
   var counter = 0;
 
   return {
-    inc: function(node, width, widthMode, height, heightMode) {
+    inc: function(width, widthMode, height, heightMode) {
       counter += 1;
 
       return cb
@@ -62,4 +62,30 @@ target.getMeasureCounterMin = function(Yoga) {
 
     return {width: measuredWidth, height: measuredHeight};
   });
+};
+
+/**
+ * deviation: Monkey-patch console.assert so execution stops and an error is thrown so
+ * failed assertions in tests can be accurately reported to the runner.
+ */
+
+class AssertionError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "AssertionError";
+  }
+}
+
+console.assert = function (value, message, ...optionalParams) {
+  if (value) {
+    return;
+  }
+  if (console.assert.useDebugger) {
+    debugger;
+  }
+  const params = (optionalParams || []).join(" ");
+  if (params) {
+    message = (message || "") + " " + params;
+  }
+  throw new AssertionError(message || "");
 };

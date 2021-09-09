@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-present, Facebook, Inc.
+ * Copyright (c) Facebook, Inc. and its affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -29,5 +29,5 @@ it("measure_once_single_flexible_child", function () {
     root.freeRecursive();
 
   (typeof gc !== "undefined") && gc();
-  console.assert(0 === Yoga.getInstanceCount(), "0 === Yoga.getInstanceCount() (" + Yoga.getInstanceCount() + ")");
+  // TODO Add event support in js and check instace allocation and de allocation using that
 });
