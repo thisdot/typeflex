@@ -108,7 +108,11 @@ import {
     YGNodeNewWithConfig,
     YGNodeNew,
     YGNodeStyleSetPosition,
-    YGNodeGetInstanceCount,
+    YGNodeSetIsReferenceBaseline,
+    YGNodeIsReferenceBaseline,
+    YGDirtiedFunc,
+    YGNodeSetDirtiedFunc,
+    YGNodeGetDirtiedFunc,
 } from './yoga';
 
 import { YGNode } from './ygnode';
@@ -456,6 +460,10 @@ export class Node {
         return fromYGValue(YGNodeStyleGetWidth(this.node));
     }
 
+    getDirtied(): YGDirtiedFunc {
+        return YGNodeGetDirtiedFunc(this.node);
+    }
+
     insertChild(child: Node, index: number): void {
         YGNodeInsertChild(this.node, child.node, index);
     }
@@ -723,11 +731,23 @@ export class Node {
         YGNodeStyleSetWidthPercent(this.node, width);
     }
 
+    setDirtiedFunc(dirtiedFunc: YGDirtiedFunc): void {
+        return YGNodeSetDirtiedFunc(this.node, dirtiedFunc);
+    }
+
     unsetMeasureFun(): void {
         YGNodeSetMeasureFunc(this.node, undefined);
     }
+
+    isReferenceBaseline(): boolean {
+        return YGNodeIsReferenceBaseline(this.node);
+    }
+
+    setIsReferenceBaseline(isReferenceBaseline: boolean): void {
+        YGNodeSetIsReferenceBaseline(this.node, isReferenceBaseline);
+    }
 }
 
-export function getInstanceCount(): number {
-    return YGNodeGetInstanceCount();
-}
+// export function getInstanceCount(): number {
+//     return YGNodeGetInstanceCount();
+// }

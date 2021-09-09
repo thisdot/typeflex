@@ -4,7 +4,10 @@
   "description": "Typescript implementation of CSS flexbox layout algorithm, a pure typescript port of Facebook's Yoga",
   "license": "MIT",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
     "babel-core": "^6.26.3",
+    "eslint": "^7.32.0",
     "mocha": "^5.2.0",
     "prettier": "^2.3.2",
     "ts-loader": "^4.4.2",
@@ -19,7 +22,9 @@
     "build": "webpack --config webpack.config.js",
     "test": "yarn build && mocha --expose-gc -r tests/tools.js tests/Facebook.Yoga/**/*.js",
     "benchmark": "yarn build && node tests/run-bench tests/Benchmarks/YGBenchmark.js",
-    "format": "prettier -w src/**/*.ts"
+    "format": "prettier -w src/**/*.ts",
+    "lint": "eslint . --ext .ts",
+    "lint-fix": "eslint . --ext .ts --fix"
   },
   "main": "dist/Yoga.js",
   "types": "dist/out/api.d.ts",

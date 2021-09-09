@@ -20,6 +20,10 @@ class YGFloatOptional {
         }
     }
 
+    unwrap(): number {
+        return !this.isUndefined_ ? this.value_ : NaN;
+    }
+
     clone(): YGFloatOptional {
         return new YGFloatOptional(this.isUndefined_ ? undefined : this.value_);
     }

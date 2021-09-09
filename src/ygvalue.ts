@@ -1,4 +1,10 @@
 import { YGUnit } from './enums';
+import { YGFloatIsUndefined } from './yoga';
+
+export const YGUndefined: number = undefined;
+export const YGValueZero: () => YGValue = () => new YGValue(0, YGUnit.Point);
+export const YGValueUndefined: () => YGValue = () => new YGValue(YGUndefined, YGUnit.Undefined);
+export const YGValueAuto: () => YGValue = () => new YGValue(YGUndefined, YGUnit.Auto);
 
 export class YGValue {
     public value: number;
@@ -9,7 +15,40 @@ export class YGValue {
         this.unit = unit;
     }
 
+    eq(value: YGValue): boolean {
+        const lhs = this;
+        const rhs = value;
+
+        if (lhs.unit != rhs.unit) {
+            return false;
+        }
+
+        switch (lhs.unit) {
+            case YGUnit.Undefined:
+            case YGUnit.Auto:
+                return true;
+            case YGUnit.Point:
+            case YGUnit.Percent:
+                return lhs.value == rhs.value;
+        }
+
+        return false;
+    }
+
+    neq(value: YGValue): boolean {
+        return !this.eq(value);
+    }
+
+    subtract(value: YGValue): YGValue {
+        return new YGValue(-value.value, value.unit);
+    }
+
     clone(): YGValue {
         return new YGValue(this.value, this.unit);
+    }
+
+    // deviation: upstream this is only provided in CompactValue.
+    isUndefined(): boolean {
+        return this.unit == YGUnit.Undefined;
     }
 }

@@ -290,12 +290,15 @@ export function YGOverflowToString(value: YGOverflow): string {
 export const YGPositionTypeCount = 2;
 
 export enum YGPositionType {
+    Static,
     Relative,
     Absolute,
 }
 
 export function YGPositionTypeToString(value: YGPositionType): string {
     switch (value) {
+        case YGPositionType.Static:
+            return 'static';
         case YGPositionType.Relative:
             return 'relative';
         case YGPositionType.Absolute:

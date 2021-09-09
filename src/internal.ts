@@ -15,8 +15,8 @@ export class YGCachedMeasurement {
     constructor() {
         this.availableWidth = 0;
         this.availableHeight = 0;
-        this.widthMeasureMode = YGMeasureMode.AtMost;
-        this.heightMeasureMode = YGMeasureMode.AtMost;
+        this.widthMeasureMode = YGMeasureMode.Undefined;
+        this.heightMeasureMode = YGMeasureMode.Undefined;
         this.computedWidth = -1;
         this.computedHeight = -1;
     }
@@ -46,7 +46,7 @@ export class YGCachedMeasurement {
     }
 
     clone(): YGCachedMeasurement {
-        let newCached = new YGCachedMeasurement();
+        const newCached = new YGCachedMeasurement();
         newCached.availableWidth = this.availableWidth;
         newCached.availableHeight = this.availableHeight;
         newCached.widthMeasureMode = this.widthMeasureMode;
@@ -67,7 +67,7 @@ export const dim: [YGDimension, YGDimension, YGDimension, YGDimension] = [
     YGDimension.Width,
 ];
 
-export const YG_MAX_CACHED_RESULT_COUNT: number = 16;
-export const kDefaultFlexGrow: number = 0.0;
-export const kDefaultFlexShrink: number = 0.0;
-export const kWebDefaultFlexShrink: number = 1.0;
+export const YG_MAX_CACHED_RESULT_COUNT = 16;
+export const kDefaultFlexGrow = 0.0;
+export const kDefaultFlexShrink = 0.0;
+export const kWebDefaultFlexShrink = 1.0;

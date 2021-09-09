@@ -5,10 +5,10 @@ import { YGFloatArrayEqual } from './utils';
 import { YGFloatIsUndefined } from './yoga';
 
 const kYGDefaultDimensionValues: () => [number, number] = () => [undefined, undefined];
-const YG_MAX_CACHED_RESULT_COUNT: number = 16;
+const YG_MAX_CACHED_RESULT_COUNT = 16;
 
 function buildCache(c: number): Array<YGCachedMeasurement> {
-    let ret: Array<YGCachedMeasurement> = [];
+    const ret: Array<YGCachedMeasurement> = [];
     for (let i = 0; i < c; i++) {
         ret.push(new YGCachedMeasurement());
     }
@@ -45,7 +45,7 @@ class YGLayout {
         this.computedFlexBasis = new YGFloatOptional();
         this.hadOverflow = false;
         this.generationCount = 0;
-        this.lastOwnerDirection = YGDirection.RTL;
+        this.lastOwnerDirection = YGDirection.Inherit;
         this.nextCachedMeasurementsIndex = 0;
         this.measuredDimensions = kYGDefaultDimensionValues();
         this.cachedLayout = new YGCachedMeasurement();
@@ -56,6 +56,38 @@ class YGLayout {
         this.border = [undefined, undefined, undefined, undefined, undefined, undefined];
         this.padding = [undefined, undefined, undefined, undefined, undefined, undefined];
         this.cachedMeasurements = buildCache(YG_MAX_CACHED_RESULT_COUNT);
+    }
+
+    getDirection(): YGDirection {
+        return this.direction;
+    }
+
+    setDirection(direction: YGDirection): void {
+        this.direction = direction;
+    }
+
+    getDidUseLegacyFlag(): boolean {
+        return this.didUseLegacyFlag;
+    }
+
+    setDidUseLegacyFlag(val: boolean): void {
+        this.didUseLegacyFlag = val;
+    }
+
+    getDoesLegacyStretchFlagAffectsLayout(): boolean {
+        return this.doesLegacyStretchFlagAffectsLayout;
+    }
+
+    setDoesLegacyStretchFlagAffectsLayout(val: boolean): void {
+        this.doesLegacyStretchFlagAffectsLayout = true;
+    }
+
+    getHadOverflow(): boolean {
+        return this.hadOverflow;
+    }
+
+    setHadOverflow(hadOverflow: boolean): void {
+        this.hadOverflow = hadOverflow;
     }
 
     equal(layout: YGLayout): boolean {
@@ -112,7 +144,7 @@ class YGLayout {
     }
 
     clone(): YGLayout {
-        let newLayout = new YGLayout();
+        const newLayout = new YGLayout();
         newLayout.dimensions = [this.dimensions[0], this.dimensions[1]];
         newLayout.direction = this.direction;
         newLayout.computedFlexBasisGeneration = this.computedFlexBasisGeneration;

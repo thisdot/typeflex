@@ -132,7 +132,7 @@ class YGStyle {
     }
 
     clone(): YGStyle {
-        let newStyle: YGStyle = new YGStyle();
+        const newStyle: YGStyle = new YGStyle();
         newStyle.direction = this.direction;
         newStyle.flexDirection = this.flexDirection;
         newStyle.justifyContent = this.justifyContent;
