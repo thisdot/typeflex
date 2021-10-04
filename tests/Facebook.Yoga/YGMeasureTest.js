@@ -5,6 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// upstream: https://github.com/facebook/yoga/blob/main/javascript/tests/Facebook.Yoga/YGMeasureTest.js
+
 var Yoga = Yoga || require("../../dist/Yoga.js");
 
 it("dont_measure_single_grow_shrink_child", function () {
