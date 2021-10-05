@@ -30,31 +30,15 @@ export enum LayoutPassReason {
 type LayoutPassCounts = [number, number, number, number, number, number, number, number];
 
 export class LayoutData {
-    layouts: number;
-    measures: number;
-    maxMeasureCache: number;
-    cachedLayouts: number;
-    cachedMeasures: number;
-    measureCallbacks: number;
-    measureCallbackReasonsCount: LayoutPassCounts;
-
     constructor(
-        layouts = 0,
-        measures = 0,
-        maxMeasureCache = 0,
-        cachedLayouts = 0,
-        cachedMeasures = 0,
-        measureCallbacks = 0,
-        measureCallbackReasonsCount: LayoutPassCounts = [0, 0, 0, 0, 0, 0, 0, 0],
-    ) {
-        this.layouts = layouts;
-        this.measures = measures;
-        this.maxMeasureCache = maxMeasureCache;
-        this.cachedLayouts = cachedLayouts;
-        this.cachedMeasures = cachedMeasures;
-        this.measureCallbacks = measureCallbacks;
-        this.measureCallbackReasonsCount = measureCallbackReasonsCount;
-    }
+        public layouts = 0,
+        public measures = 0,
+        public maxMeasureCache = 0,
+        public cachedLayouts = 0,
+        public cachedMeasures = 0,
+        public measureCallbacks = 0,
+        public measureCallbackReasonsCount: LayoutPassCounts = [0, 0, 0, 0, 0, 0, 0, 0],
+    ) {}
 }
 
 export function LayoutPassReasonToString(value: LayoutPassReason): string {
