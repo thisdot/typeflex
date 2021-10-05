@@ -1,3 +1,5 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGFloatOptional.h
+
 import { YGFloatIsUndefined } from './yoga';
 
 class YGFloatOptional {

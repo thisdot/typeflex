@@ -1,3 +1,6 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGLayout.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGLayout.cpp
+
 import { YGDirection } from './enums';
 import { YGFloatOptional } from './ygfloatoptional';
 import { YGCachedMeasurement } from './internal';

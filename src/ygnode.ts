@@ -1,3 +1,6 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGNode.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGNode.cpp
+
 import {
     YGFlexDirection,
     YGDirection,

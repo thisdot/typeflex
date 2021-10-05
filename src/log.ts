@@ -1,3 +1,6 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/log.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/log.cpp
+
 import { YGLogLevel } from './enums';
 import { YGConfig } from './ygconfig';
 import { YGNode } from './ygnode';

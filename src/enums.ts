@@ -1,3 +1,6 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGEnums.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGEnums.cpp
+
 export const YGAlignCount = 8;
 
 export enum YGAlign {

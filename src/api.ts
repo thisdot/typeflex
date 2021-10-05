@@ -1,3 +1,5 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/javascript/sources/entry-common.js
+
 import {
     YGAlign,
     YGDimension,

@@ -1,3 +1,6 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGValue.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/YGValue.cpp
+
 import { YGUnit } from './enums';
 
 export const YGUndefined: number = undefined;

@@ -5,6 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/event/event.h
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/event/event.cpp
+
 import { YGMeasureMode } from './enums';
 import { YGConfig } from './ygconfig';
 import { YGNode } from './ygnode';

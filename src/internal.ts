@@ -1,3 +1,5 @@
+// upstream: https://github.com/facebook/yoga/blob/v1.19.0/yoga/Yoga-internal.h
+
 import { YGMeasureMode, YGEdge, YGDimension } from './enums';
 
 import { YGFloatIsUndefined } from './yoga';
