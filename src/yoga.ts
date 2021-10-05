@@ -112,7 +112,7 @@ function YGDefaultLog(config: YGConfig, node: YGNode, level: YGLogLevel, format:
     }
 }
 
-export function YGFloatIsUndefined(value: number) {
+export function YGFloatIsUndefined(value: number): boolean {
     if (value === undefined || isNaN(value)) {
         return true;
     }
@@ -167,7 +167,7 @@ export function YGNodeGetDirtiedFunc(node: YGNode): YGDirtiedFunc {
     return node.getDirtied();
 }
 
-export function YGNodeSetDirtiedFunc(node: YGNode, dirtiedFunc: YGDirtiedFunc) {
+export function YGNodeSetDirtiedFunc(node: YGNode, dirtiedFunc: YGDirtiedFunc): void {
     node.setDirtiedFunc(dirtiedFunc);
 }
 
@@ -219,14 +219,14 @@ export function YGNodeNew(): YGNode {
     return YGNodeNewWithConfig(YGConfigGetDefault());
 }
 
-export function YGNodeClone(oldNode: YGNode) {
+export function YGNodeClone(oldNode: YGNode): YGNode {
     const node: YGNode = new YGNode(oldNode);
     YGEvent.publish(node, EventType.NodeAllocation, { config: node.getConfig() });
     node.setOwner(null);
     return node;
 }
 
-export function YGConfigClone(oldConfig: YGConfig) {
+export function YGConfigClone(oldConfig: YGConfig): YGConfig {
     const config: YGConfig = new YGConfig(oldConfig.logger);
     gConfigInstanceCount++;
     return config;
@@ -319,7 +319,7 @@ export function YGConfigFree(config: YGConfig): void {
     gConfigInstanceCount--;
 }
 
-export function YGConfigCopy(dest: YGConfig, src: YGConfig) {
+export function YGConfigCopy(dest: YGConfig, src: YGConfig): void {
     (<any>Object).assign(dest, src);
 }
 
@@ -1092,7 +1092,7 @@ export function YGIsBaselineLayout(node: YGNode): boolean {
     return false;
 }
 
-export function YGNodeDimWithMargin(node: YGNode, axis: YGFlexDirection, widthSize: number) {
+export function YGNodeDimWithMargin(node: YGNode, axis: YGFlexDirection, widthSize: number): number {
     return (
         node.getLayout().measuredDimensions[dim[axis]] +
         node.getLeadingMargin(axis, widthSize).add(node.getTrailingMargin(axis, widthSize)).unwrap()
@@ -1152,14 +1152,14 @@ export function YGNodeBoundAxis(
     value: number,
     axisSize: number,
     widthSize: number,
-) {
+): number {
     return YGFloatMax(
         YGNodeBoundAxisWithinMinAndMax(node, axis, new YGFloatOptional(value), axisSize).unwrap(),
         YGNodePaddingAndBorderForAxis(node, axis, widthSize),
     );
 }
 
-export function YGNodeSetChildTrailingPosition(node: YGNode, child: YGNode, axis: YGFlexDirection) {
+export function YGNodeSetChildTrailingPosition(node: YGNode, child: YGNode, axis: YGFlexDirection): void {
     const size: number = child.getLayout().measuredDimensions[dim[axis]];
     child.setLayoutPosition(
         node.getLayout().measuredDimensions[dim[axis]] - size - child.getLayout().position[pos[axis]],
@@ -1718,7 +1718,7 @@ export function YGNodeFixedSizeSetMeasuredDimensions(
     heightMeasureMode: YGMeasureMode,
     ownerWidth: number,
     ownerHeight: number,
-) {
+): boolean {
     if (
         (!YGFloatIsUndefined(availableWidth) && widthMeasureMode == YGMeasureMode.AtMost && availableWidth <= 0.0) ||
         (!YGFloatIsUndefined(availableHeight) && heightMeasureMode == YGMeasureMode.AtMost && availableHeight <= 0.0) ||
@@ -3351,8 +3351,6 @@ export function YGNodelayoutImpl(
     }
 }
 
-const gDepth = 0;
-const gPrintTree = false;
 const gPrintChanges = false;
 const gPrintSkips = false;
 const spacer = '                                                            ';
@@ -3390,7 +3388,7 @@ export function YGMeasureModeOldSizeIsUnspecifiedAndStillFits(
     size: number,
     lastSizeMode: YGMeasureMode,
     lastComputedSize: number,
-) {
+): boolean {
     return (
         sizeMode == YGMeasureMode.AtMost &&
         lastSizeMode == YGMeasureMode.Undefined &&
@@ -3421,7 +3419,7 @@ export function YGRoundValueToPixelGrid(
     pointScaleFactor: number,
     forceCeil: boolean,
     forceFloor: boolean,
-) {
+): number {
     let scaledValue: number = value * pointScaleFactor;
     const fractial: number = scaledValue % 1.0;
 
@@ -3855,7 +3853,7 @@ export function YGNodeCalculateLayoutWithContext(
     ownerHeight: number,
     ownerDirection: YGDirection,
     layoutContext: any,
-) {
+): void {
     YGEvent.publish(node, EventType.LayoutPassStart, { layoutContext });
     const markerData: LayoutData = new LayoutData();
 
@@ -3995,7 +3993,7 @@ export function YGConfigSetShouldDiffLayoutWithoutLegacyStretchBehaviour(
     config.shouldDiffLayoutWithoutLegacyStretchBehaviour = shouldDiffLayout;
 }
 
-export function YGAssert(condition: boolean, message: string) {
+export function YGAssert(condition: boolean, message: string): void {
     if (!condition) {
         Log.log(new YGNode(null), YGLogLevel.Fatal, null, '%s\n', message);
         throwLogicalErrorWithMessage(message);
@@ -4009,7 +4007,7 @@ export function YGAssertWithNode(node: YGNode, condition: boolean, message: stri
     }
 }
 
-export function YGAssertWithConfig(config: YGConfig, condition: boolean, message: string) {
+export function YGAssertWithConfig(config: YGConfig, condition: boolean, message: string): void {
     if (!condition) {
         Log.log(config, YGLogLevel.Fatal, null, '%s\n', message);
         throwLogicalErrorWithMessage(message);
@@ -4024,7 +4022,7 @@ export function YGConfigSetExperimentalFeatureEnabled(
     config.experimentalFeatures[feature] = enabled;
 }
 
-export function YGConfigIsExperimentalFeatureEnabled(config: YGConfig, feature: YGExperimentalFeature) {
+export function YGConfigIsExperimentalFeatureEnabled(config: YGConfig, feature: YGExperimentalFeature): boolean {
     return config.experimentalFeatures[feature];
 }
 

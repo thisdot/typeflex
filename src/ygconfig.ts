@@ -41,7 +41,7 @@ class YGConfig {
         return clone;
     }
 
-    setLogger(logger?: YGLogger) {
+    setLogger(logger?: YGLogger): void {
         this.logger = logger;
     }
 

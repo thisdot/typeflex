@@ -60,7 +60,7 @@ export function YGFloatMin(a: number, b: number): number {
     return YGFloatIsUndefined(a) ? b : a;
 }
 
-export function YGFloatArrayEqual(val1: Array<number>, val2: Array<number>) {
+export function YGFloatArrayEqual(val1: Array<number>, val2: Array<number>): boolean {
     let areEqual = true;
     for (let i = 0; i < val1.length && areEqual; ++i) {
         areEqual = YGFloatsEqual(val1[i], val2[i]);
@@ -68,7 +68,7 @@ export function YGFloatArrayEqual(val1: Array<number>, val2: Array<number>) {
     return areEqual;
 }
 
-export function YGValueArrayEqual(val1: Array<YGValue>, val2: Array<YGValue>) {
+export function YGValueArrayEqual(val1: Array<YGValue>, val2: Array<YGValue>): boolean {
     let areEqual = true;
     for (let i = 0; i < val1.length && areEqual; ++i) {
         areEqual = YGValueEqual(val1[i], val2[i]);

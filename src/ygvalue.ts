@@ -1,5 +1,4 @@
 import { YGUnit } from './enums';
-import { YGFloatIsUndefined } from './yoga';
 
 export const YGUndefined: number = undefined;
 export const YGValueZero: () => YGValue = () => new YGValue(0, YGUnit.Point);

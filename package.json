@@ -23,8 +23,8 @@
     "test": "yarn build && mocha --expose-gc -r tests/tools.js tests/Facebook.Yoga/**/*.js",
     "benchmark": "yarn build && node tests/run-bench tests/Benchmarks/YGBenchmark.js",
     "format": "prettier -w src/**/*.ts",
-    "lint": "eslint . --ext .ts",
-    "lint-fix": "eslint . --ext .ts --fix"
+    "lint": "eslint ./src --ext .ts",
+    "lint-fix": "eslint ./src --ext .ts --fix"
   },
   "main": "dist/Yoga.js",
   "types": "dist/out/api.d.ts",

@@ -1,6 +1,4 @@
-import { YGMeasureMode, YGEdge, YGUnit, YGLogLevel, YGDimension } from './enums';
-
-import { YGNode } from './ygnode';
+import { YGMeasureMode, YGEdge, YGDimension } from './enums';
 
 import { YGFloatIsUndefined } from './yoga';
 
@@ -21,7 +19,7 @@ export class YGCachedMeasurement {
         this.computedHeight = -1;
     }
 
-    isEqual(measurement: YGCachedMeasurement) {
+    isEqual(measurement: YGCachedMeasurement): boolean {
         let isEqual =
             this.widthMeasureMode == measurement.widthMeasureMode &&
             this.heightMeasureMode == measurement.heightMeasureMode;

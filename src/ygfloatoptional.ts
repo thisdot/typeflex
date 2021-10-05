@@ -36,7 +36,7 @@ class YGFloatOptional {
         return this.value_;
     }
 
-    setValue(value: number) {
+    setValue(value: number): void {
         this.value_ = value;
         this.isUndefined_ = false;
     }

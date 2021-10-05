@@ -5,7 +5,6 @@ import {
     YGUnit,
     YGEdge,
     YGDimension,
-    YGDimensionCount,
     YGPositionType,
     YGAlign,
     YGMeasureMode,
@@ -31,18 +30,7 @@ import { YGValue } from './ygvalue';
 
 import { trailing, leading, kDefaultFlexGrow, kDefaultFlexShrink, kWebDefaultFlexShrink } from './internal';
 
-import {
-    YGComputedEdgeValue,
-    YGFloatIsUndefined,
-    YGPrintFunc,
-    YGMeasureFunc,
-    YGBaselineFunc,
-    YGDirtiedFunc,
-    YGCloneNodeFunc,
-    YGNodeClone,
-    YGSize,
-    YGAssertWithNode,
-} from './yoga';
+import { YGPrintFunc, YGMeasureFunc, YGBaselineFunc, YGDirtiedFunc, YGSize, YGAssertWithNode } from './yoga';
 
 import { YGValueUndefined, YGValueZero, YGValueAuto } from './ygvalue';
 
@@ -149,7 +137,7 @@ class YGNode {
         config: YGConfig = null,
         isDirty = false,
         resolvedDimensions: [YGValue, YGValue] = [YGValueUndefined(), YGValueUndefined()],
-    ) {
+    ): void {
         this.print_ = print;
         this.hasNewLayout_ = hasNewLayout;
         this.isReferenceBaseline_ = isReferenceBaseline;
@@ -255,7 +243,7 @@ class YGNode {
         return this.measure_(this, width, widthMode, height, heightMode, layoutContext);
     }
 
-    baseline(width: number, height: number, layoutContext?: any) {
+    baseline(width: number, height: number, layoutContext?: any): number {
         return this.baseline_(this, width, height, layoutContext);
     }
 
