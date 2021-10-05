@@ -7,6 +7,8 @@
  * @format
  */
 
+// upstream: https://github.com/facebook/yoga/blob/342aebe1d73e5770a1862b6a94c6b877c1439a9b/javascript/tests/tools.js
+
 var target = typeof global !== 'undefined' ? global : window;
 
 target.getMeasureCounter = function(Yoga, cb, staticWidth, staticHeight) {

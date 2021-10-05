@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// upstream: https://github.com/facebook/yoga/blob/main/javascript/tests/Facebook.Yoga/YGDirtiedTest.js
+// upstream: https://github.com/facebook/yoga/blob/342aebe1d73e5770a1862b6a94c6b877c1439a9b/javascript/tests/Facebook.Yoga/YGDirtiedTest.js
 
 var Yoga = Yoga || require("../../dist/Yoga.js");
 
