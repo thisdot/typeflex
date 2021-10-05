@@ -147,11 +147,11 @@ export function YGComputedEdgeValue(edges: Array<YGValue>, edge: YGEdge, default
     return defaultValue;
 }
 
-export function YGNodeGetContext(node: YGNode): any {
+export function YGNodeGetContext(node: YGNode): unknown {
     return node.getContext();
 }
 
-export function YGNodeSetContext(node: YGNode, context: any): void {
+export function YGNodeSetContext(node: YGNode, context: unknown): void {
     return node.setContext(context);
 }
 
@@ -801,8 +801,10 @@ export function YGNodeLayoutGetDirection(node: YGNode): YGDirection {
 export function YGNodeLayoutGetHadOverflow(node: YGNode): boolean {
     return node.getLayout().hadOverflow;
 }
-export function YGNodeLayoutGetMargin(node: YGNode, edge: YGEdge): number {
-    YGAssertWithNode(node, edge <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+export function YGNodeLayoutGetMargin(node: YGNode, edge_: YGEdge): number {
+    YGAssertWithNode(node, edge_ <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+
+    const edge = edge_ as Exclude<YGEdge, YGEdge.All | YGEdge.Horizontal | YGEdge.Vertical>;
 
     if (edge == YGEdge.Start) {
         if (node.getLayout().direction == YGDirection.RTL) {
@@ -822,8 +824,10 @@ export function YGNodeLayoutGetMargin(node: YGNode, edge: YGEdge): number {
 
     return node.getLayout().margin[edge];
 }
-export function YGNodeLayoutGetBorder(node: YGNode, edge: YGEdge): number {
-    YGAssertWithNode(node, edge <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+export function YGNodeLayoutGetBorder(node: YGNode, edge_: YGEdge): number {
+    YGAssertWithNode(node, edge_ <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+
+    const edge = edge_ as Exclude<YGEdge, YGEdge.All | YGEdge.Horizontal | YGEdge.Vertical>;
 
     if (edge == YGEdge.Start) {
         if (node.getLayout().direction == YGDirection.RTL) {
@@ -843,8 +847,10 @@ export function YGNodeLayoutGetBorder(node: YGNode, edge: YGEdge): number {
 
     return node.getLayout().border[edge];
 }
-export function YGNodeLayoutGetPadding(node: YGNode, edge: YGEdge): number {
-    YGAssertWithNode(node, edge <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+export function YGNodeLayoutGetPadding(node: YGNode, edge_: YGEdge): number {
+    YGAssertWithNode(node, edge_ <= YGEdge.End, 'Cannot get layout properties of multi-edge shorthands');
+
+    const edge = edge_ as Exclude<YGEdge, YGEdge.All | YGEdge.Horizontal | YGEdge.Vertical>;
 
     if (edge == YGEdge.Start) {
         if (node.getLayout().direction == YGDirection.RTL) {
@@ -4000,7 +4006,7 @@ export function YGAssert(condition: boolean, message: string): void {
     }
 }
 
-export function YGAssertWithNode(node: YGNode, condition: boolean, message: string): void {
+export function YGAssertWithNode(node: YGNode, condition: boolean, message: string): asserts condition {
     if (!condition) {
         Log.log(node, YGLogLevel.Fatal, null, '%s\n', message);
         throwLogicalErrorWithMessage(message);

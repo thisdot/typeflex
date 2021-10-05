@@ -55,10 +55,25 @@ export class YGCachedMeasurement {
     }
 }
 
-export const leading: [YGEdge, YGEdge, YGEdge, YGEdge] = [YGEdge.Top, YGEdge.Bottom, YGEdge.Left, YGEdge.Right];
-export const trailing: [YGEdge, YGEdge, YGEdge, YGEdge] = [YGEdge.Bottom, YGEdge.Top, YGEdge.Right, YGEdge.Left];
-export const pos: [YGEdge, YGEdge, YGEdge, YGEdge] = [YGEdge.Top, YGEdge.Bottom, YGEdge.Left, YGEdge.Right];
-export const dim: [YGDimension, YGDimension, YGDimension, YGDimension] = [
+export const leading: [YGEdge.Top, YGEdge.Bottom, YGEdge.Left, YGEdge.Right] = [
+    YGEdge.Top,
+    YGEdge.Bottom,
+    YGEdge.Left,
+    YGEdge.Right,
+];
+export const trailing: [YGEdge.Bottom, YGEdge.Top, YGEdge.Right, YGEdge.Left] = [
+    YGEdge.Bottom,
+    YGEdge.Top,
+    YGEdge.Right,
+    YGEdge.Left,
+];
+export const pos: [YGEdge.Top, YGEdge.Bottom, YGEdge.Left, YGEdge.Right] = [
+    YGEdge.Top,
+    YGEdge.Bottom,
+    YGEdge.Left,
+    YGEdge.Right,
+];
+export const dim: [YGDimension.Height, YGDimension.Height, YGDimension.Width, YGDimension.Width] = [
     YGDimension.Height,
     YGDimension.Height,
     YGDimension.Width,
