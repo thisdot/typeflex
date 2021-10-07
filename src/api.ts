@@ -750,7 +750,3 @@ export class Node {
         YGNodeSetIsReferenceBaseline(this.node, isReferenceBaseline);
     }
 }
-
-// export function getInstanceCount(): number {
-//     return YGNodeGetInstanceCount();
-// }
